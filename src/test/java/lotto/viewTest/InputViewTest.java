@@ -6,6 +6,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import lotto.view.InputView;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -56,9 +59,33 @@ public class InputViewTest {
         @DisplayName("올바르지 않은 금액일 경우 [ERROR]가 포함된 에러 메시지를 출력한다.")
         @ParameterizedTest
         @ValueSource(strings = {"8100", "300", "2000000000", "hello"})
-        void wrongMoneyTest(String money) {
+        void wrong_Money(String money) {
 
             assertThatThrownBy(() -> inputView.inputMoney(money))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+    }
+
+    @Nested
+    @DisplayName("로또 번호 테스트")
+    class LottoNumberTest {
+
+        @DisplayName("올바른 로또 번호를 받으면 검증 후 이를 리스트로 리턴한다.")
+        @Test
+        void wright_Lotto_Number() {
+            String lottoNumber = "1,2,3,4,5,6";
+            List<Integer> expected = new ArrayList<>(Arrays.asList(1,2,3,4,5,6))
+
+            assertThat(inputView.inputLottoNumbers(lottoNumber)).isEqualTo(expected);
+        }
+
+        @DisplayName("올바르지 않은 금액일 경우 [ERROR]가 포함된 에러 메시지를 출력한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"1,2,3,4", "46,1,2,3,4,5", "1,2,3,4,5,6,7", "hello,0,h,3,5,q"})
+        void wrong_Money(String lottoNumber) {
+
+            assertThatThrownBy(() -> inputView.inputLottoNumbers(lottoNumber))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }

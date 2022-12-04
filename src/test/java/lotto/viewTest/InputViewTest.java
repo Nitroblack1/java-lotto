@@ -90,4 +90,27 @@ public class InputViewTest {
                     .hasMessageContaining("[ERROR]");
         }
     }
+
+    @Nested
+    @DisplayName("보너스 번호 테스트")
+    class BonusNumberTest {
+
+        @DisplayName("보너스 번호를 받아 검증 후 올바른 입력이면 반환한다.")
+        @Test
+        void right_Bonus_Number() {
+            String money = "7";
+
+            assertThat(inputView.inputBonusNumber(money)).isEqualTo(Integer.parseInt(money));
+        }
+
+        @DisplayName("올바르지 않은 보너스 번호일 경우 [ERROR]가 포함된 에러 메시지를 출력한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"46", "0", "2,5", "h", "hello"})
+        void wrong_Bonus_Number(String bonusNumber) {
+
+            assertThatThrownBy(() -> inputView.inputBonusNumber(bonusNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]");
+        }
+    }
 }

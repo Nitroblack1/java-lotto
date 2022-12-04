@@ -49,4 +49,19 @@ public class InputView {
         }
         return userInput;
     }
+
+    public int inputBonusNumber(String userInput) {
+        return Integer.parseInt(validateBonusNumber(userInput));
+    }
+
+    private String validateBonusNumber(String bonusNumber) throws IllegalArgumentException {
+        String pattern = "^[0-9]$";
+        if (!bonusNumber.matches(pattern)) {
+            throw new IllegalArgumentException(ErrorMessages.INPUT_NUMBER);
+        }
+        if (Integer.parseInt(bonusNumber) > 45 || Integer.parseInt(bonusNumber) < 1) {
+            throw new IllegalArgumentException(ErrorMessages.LOTTO_NUMBER_WRONG_FORMAT);
+        }
+        return bonusNumber;
+    }
 }

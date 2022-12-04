@@ -75,7 +75,7 @@ public class InputViewTest {
         @Test
         void wright_Lotto_Number() {
             String lottoNumber = "1,2,3,4,5,6";
-            List<Integer> expected = new ArrayList<>(Arrays.asList(1,2,3,4,5,6))
+            List<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
             assertThat(inputView.inputLottoNumbers(lottoNumber)).isEqualTo(expected);
         }

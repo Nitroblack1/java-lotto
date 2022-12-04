@@ -10,11 +10,10 @@ public class Application {
         LottoManager lottoManager = new LottoManager();
         InputView inputView = new InputView();
         OutputView OutputView = new OutputView();
-        inputView.inputMoney(readLine());
+//        inputView.inputMoney(readLine());
 //        OutputView.printTickets();
-        inputView.inputLottoNumbers(readLine());
-        inputView.inputBonusNumber(readLine());
+//        inputView.inputLottoNumbers(readLine());
+//        inputView.inputBonusNumber(readLine());
 //        OutputView.printResult();
-
     }
 }

@@ -1,5 +1,6 @@
 package lotto.controllerTest;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -36,5 +37,13 @@ public class LottoManagerTest {
         assertThat(lottoManager.getTickets().getTickets().size()).isEqualTo(8);
     }
 
+    @DisplayName("당첨 번호를 전달받으면 이를 Lotto 에 보낸다.")
+    @Test
+    void pass_lotto_number_to_Lotto() {
+        String lottoNumber = "1,2,3,4,5,6";
+        List<Integer> expected = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
 
+        lottoManager.receiveLottoNumber(inputView.inputLottoNumbers(lottoNumber));
+        assertThat(lottoManager.getLotto().getNumbers()).isEqualTo(expected);
+    }
 }

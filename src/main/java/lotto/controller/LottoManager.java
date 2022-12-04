@@ -5,6 +5,7 @@ import lotto.model.Lotto;
 import lotto.model.Tickets;
 
 public class LottoManager {
+
     private Tickets tickets;
     private Lotto lotto;
 
@@ -18,6 +19,10 @@ public class LottoManager {
 
     public void receiveLottoNumber(List<Integer> number) {
         lotto = new Lotto(number);
+    }
+
+    public void receiveBonusNumber(int bonus) {
+        lotto.receiveBonusNumber(bonus);
     }
 
     public Tickets getTickets() {

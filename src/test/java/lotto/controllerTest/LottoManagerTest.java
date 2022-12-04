@@ -46,4 +46,13 @@ public class LottoManagerTest {
         lottoManager.receiveLottoNumber(inputView.inputLottoNumbers(lottoNumber));
         assertThat(lottoManager.getLotto().getNumbers()).isEqualTo(expected);
     }
+
+    @DisplayName("보너스 번호를 받으면 이를 Lotto 에 보낸다.")
+    @Test
+    void pass_bonus_number_to_LottoManager() {
+        String bonusNumber = "7";
+        
+        lottoManager.receiveBonusNumber(inputView.inputBonusNumber(bonusNumber));
+        assertThat(lottoManager.getLotto().getBonusNumber()).isEqualto(7);
+    }
 }

@@ -13,8 +13,8 @@
 
 ### Application
 - [x] LottoManager 를 trigger 한다.
-- [ ] InputView 로부터 구입 금액을 받아 LottoManager 로 전달한다.
-- [ ] InputView 로부터 당첨 번호를 받아 LottoManager 로 전달한다.
+- [x] InputView 로부터 구입 금액을 받아 LottoManager 로 전달한다.
+- [x] InputView 로부터 당첨 번호를 받아 LottoManager 로 전달한다.
 - [ ] InputView 로부터 보너스 번호를 받아 LottoManager 로 전달한다.
 - [ ] LottoManager 로부터 당첨 통계를 받아 OutputView 로 전달한다.
 

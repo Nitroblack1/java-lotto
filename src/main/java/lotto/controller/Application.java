@@ -12,7 +12,7 @@ public class Application {
         OutputView OutputView = new OutputView();
         lottoManager.orderTickets(inputView.inputMoney(readLine()));
 //        OutputView.printTickets();
-//        inputView.inputLottoNumbers(readLine());
+        lottoManager.receiveLottoNumber(inputView.inputLottoNumbers(readLine()));
 //        inputView.inputBonusNumber(readLine());
 //        OutputView.printResult();
     }

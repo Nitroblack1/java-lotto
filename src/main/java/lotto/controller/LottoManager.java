@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.Tickets;
 
@@ -15,7 +16,15 @@ public class LottoManager {
         tickets.issueTickets(money / 1_000);
     }
 
+    public void receiveLottoNumber(List<Integer> number) {
+        lotto = new Lotto(number);
+    }
+
     public Tickets getTickets() {
         return this.tickets;
+    }
+
+    public Lotto getLotto() {
+        return this.lotto;
     }
 }

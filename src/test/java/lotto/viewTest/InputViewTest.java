@@ -43,11 +43,11 @@ public class InputViewTest {
 
     @Nested
     @DisplayName("입력 금액 테스트")
-    class validateInput {
+    class MoneyTest {
 
-        @DisplayName("올바른 금액일 경우")
+        @DisplayName("금액을 받아 검증 후 올바른 입력이면 반환한다.")
         @Test
-        void rightMoneyInput() {
+        void right_Money() {
             String money = "8000";
 
             assertThat(inputView.inputMoney(money)).isEqualTo(Integer.parseInt(money));

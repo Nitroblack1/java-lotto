@@ -3,7 +3,9 @@ package lotto.viewTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -76,16 +78,20 @@ public class InputViewTest {
         void wright_Lotto_Number() {
             String lottoNumber = "1,2,3,4,5,6";
             List<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+            InputStream in = new ByteArrayInputStream(lottoNumber.getBytes());
+            System.setIn(in);
 
-            assertThat(inputView.inputLottoNumbers(lottoNumber)).isEqualTo(expected);
+            assertThat(inputView.inputLottoNumbers()).isEqualTo(expected);
         }
 
         @DisplayName("올바르지 않은 금액일 경우 [ERROR]가 포함된 에러 메시지를 출력한다.")
         @ParameterizedTest
         @ValueSource(strings = {"1,2,3,4", "46,1,2,3,4,5", "1,2,3,4,5,6,7", "hello,0,h,3,5,q"})
         void wrong_Money(String lottoNumber) {
+            InputStream in = new ByteArrayInputStream(lottoNumber.getBytes());
+            System.setIn(in);
 
-            assertThatThrownBy(() -> inputView.inputLottoNumbers(lottoNumber))
+            assertThatThrownBy(() -> inputView.inputLottoNumbers())
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }
@@ -99,16 +105,20 @@ public class InputViewTest {
         @Test
         void right_Bonus_Number() {
             String money = "7";
+            InputStream in = new ByteArrayInputStream(money.getBytes());
+            System.setIn(in);
 
-            assertThat(inputView.inputBonusNumber(money)).isEqualTo(Integer.parseInt(money));
+            assertThat(inputView.inputBonusNumber()).isEqualTo(Integer.parseInt(money));
         }
 
         @DisplayName("올바르지 않은 보너스 번호일 경우 [ERROR]가 포함된 에러 메시지를 출력한다.")
         @ParameterizedTest
         @ValueSource(strings = {"46", "0", "2,5", "h", "hello"})
         void wrong_Bonus_Number(String bonusNumber) {
+            InputStream in = new ByteArrayInputStream(bonusNumber.getBytes());
+            System.setIn(in);
 
-            assertThatThrownBy(() -> inputView.inputBonusNumber(bonusNumber))
+            assertThatThrownBy(() -> inputView.inputBonusNumber())
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]");
         }

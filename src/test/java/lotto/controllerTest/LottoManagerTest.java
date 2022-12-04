@@ -1,25 +1,16 @@
 package lotto.controllerTest;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.controller.LottoManager;
-import lotto.model.Lotto;
 import lotto.view.InputView;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 
 public class LottoManagerTest {
@@ -34,6 +25,7 @@ public class LottoManagerTest {
         String money = "8000";
 
         lottoManager.orderTickets(inputView.inputMoney(money));
+        System.out.println(lottoManager.getTickets().getTickets());
         assertThat(lottoManager.getTickets().getTickets().size()).isEqualTo(8);
     }
 
@@ -41,9 +33,11 @@ public class LottoManagerTest {
     @Test
     void pass_lotto_number_to_Lotto() {
         String lottoNumber = "1,2,3,4,5,6";
-        List<Integer> expected = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        List<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        InputStream in = new ByteArrayInputStream(lottoNumber.getBytes());
+        System.setIn(in);
 
-        lottoManager.receiveLottoNumber(inputView.inputLottoNumbers(lottoNumber));
+        lottoManager.receiveLottoNumber(inputView.inputLottoNumbers());
         assertThat(lottoManager.getLotto().getNumbers()).isEqualTo(expected);
     }
 
@@ -51,8 +45,12 @@ public class LottoManagerTest {
     @Test
     void pass_bonus_number_to_LottoManager() {
         String bonusNumber = "7";
-        
-        lottoManager.receiveBonusNumber(inputView.inputBonusNumber(bonusNumber));
-        assertThat(lottoManager.getLotto().getBonusNumber()).isEqualto(7);
+        InputStream in = new ByteArrayInputStream(bonusNumber.getBytes());
+        System.setIn(in);
+
+        lottoManager.receiveLottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6));
+        lottoManager.receiveBonusNumber(inputView.inputBonusNumber());
+        assertThat(lottoManager.getLotto().getBonusNumber()).isEqualTo(
+                Integer.parseInt(bonusNumber));
     }
 }

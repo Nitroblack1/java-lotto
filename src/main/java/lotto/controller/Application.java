@@ -6,14 +6,19 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class Application {
+
     public static void main(String[] args) {
-        LottoManager lottoManager = new LottoManager();
         InputView inputView = new InputView();
         OutputView OutputView = new OutputView();
-        lottoManager.orderTickets(inputView.inputMoney(readLine()));
+        LottoManager lottoManager = new LottoManager();
+        try {
+            lottoManager.orderTickets(inputView.inputMoney(readLine()));
 //        OutputView.printTickets();
-        lottoManager.receiveLottoNumber(inputView.inputLottoNumbers(readLine()));
-//        inputView.inputBonusNumber(readLine());
+            lottoManager.receiveLottoNumber(inputView.inputLottoNumbers());
+            lottoManager.receiveBonusNumber(inputView.inputBonusNumber());
 //        OutputView.printResult();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

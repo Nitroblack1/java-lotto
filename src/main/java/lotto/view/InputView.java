@@ -19,7 +19,7 @@ public class InputView {
     private String validateMoneyInput(String userInput) throws IllegalArgumentException {
         String pattern = "^[0-9]*$";
         if (!userInput.matches(pattern)) {
-            throw new IllegalArgumentException(ErrorMessages.MONEY_SHOULD_1_000_UNIT);
+            throw new IllegalArgumentException(ErrorMessages.INPUT_NUMBER);
         }
         if (Integer.parseInt(userInput) % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessages.MONEY_SHOULD_1_000_UNIT);
@@ -30,16 +30,18 @@ public class InputView {
         return userInput;
     }
 
-    public List<Integer> inputLottoNumbers(String userInput) {
+    public List<Integer> inputLottoNumbers() {
+        System.out.println(PrintOuts.INPUT_LOTTO_NUMBERS);
+        String userInput = readLine();
         return Arrays.stream(validateLottoNumbers(userInput).split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
     private String validateLottoNumbers(String userInput) throws IllegalArgumentException {
-        if(userInput.split(",").length != 6) {
+        if (userInput.split(",").length != 6) {
             throw new IllegalArgumentException(ErrorMessages.LOTTO_NUMBERS_LENGTH_6);
         }
-        for(String number : userInput.split(",")) {
+        for (String number : userInput.split(",")) {
             if (!number.matches("^[0-9]$")) {
                 throw new IllegalArgumentException(ErrorMessages.INPUT_NUMBER);
             }
@@ -50,7 +52,9 @@ public class InputView {
         return userInput;
     }
 
-    public int inputBonusNumber(String userInput) {
+    public int inputBonusNumber() {
+        System.out.println(PrintOuts.INPUT_BONUS_NUMBER);
+        String userInput = readLine();
         return Integer.parseInt(validateBonusNumber(userInput));
     }
 

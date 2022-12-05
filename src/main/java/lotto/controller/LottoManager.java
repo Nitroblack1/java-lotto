@@ -3,7 +3,6 @@ package lotto.controller;
 import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.Tickets;
-import lotto.model.WinResult;
 
 public class LottoManager {
 
@@ -26,8 +25,9 @@ public class LottoManager {
         lotto.receiveBonusNumber(bonus);
     }
 
-    public void calculateWinResult() {
+    public double calculateWinResult() {
         lotto.winNumber(this.tickets.getTickets());
+        return lotto.calculateEarningRates(tickets.getTickets().size());
     }
 
     public Tickets getTickets() {

@@ -15,6 +15,7 @@ public enum WinResult {
     WinResult(double winNumber, String winMoney) {
         this.winNumber = winNumber;
         this.winMoney = winMoney;
+        this.count = 0;
     }
 
     public double getWinNumber() {

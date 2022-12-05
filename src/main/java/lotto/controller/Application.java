@@ -17,7 +17,7 @@ public class Application {
             lottoManager.receiveLottoNumber(inputView.inputLottoNumbers());
             lottoManager.receiveBonusNumber(inputView.inputBonusNumber());
             lottoManager.calculateWinResult();
-        OutputView.printResult();
+            OutputView.printResult();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

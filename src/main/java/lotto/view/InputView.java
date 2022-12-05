@@ -49,6 +49,9 @@ public class InputView {
                 throw new IllegalArgumentException(ErrorMessages.LOTTO_NUMBER_WRONG_FORMAT);
             }
         }
+        if (Arrays.stream(userInput.split(",")).distinct().count() != 6) {
+            throw new IllegalArgumentException(ErrorMessages.NUMBER_IS_DUPLICATED);
+        }
         return userInput;
     }
 

@@ -86,7 +86,7 @@ public class InputViewTest {
 
         @DisplayName("올바르지 않은 금액일 경우 [ERROR]가 포함된 에러 메시지를 출력한다.")
         @ParameterizedTest
-        @ValueSource(strings = {"1,2,3,4", "46,1,2,3,4,5", "1,2,3,4,5,6,7", "hello,0,h,3,5,q"})
+        @ValueSource(strings = {"1,2,3,4", "46,1,2,3,4,5", "1,2,3,4,5,6,7", "hello,0,h,3,5,q", "1,2,3,4,5,5"})
         void wrong_Money(String lottoNumber) {
             InputStream in = new ByteArrayInputStream(lottoNumber.getBytes());
             System.setIn(in);

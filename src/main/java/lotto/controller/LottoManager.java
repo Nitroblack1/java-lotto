@@ -25,6 +25,10 @@ public class LottoManager {
         lotto.receiveBonusNumber(bonus);
     }
 
+    public void calculateWinResult() {
+        lotto.winNumber(this.tickets.getTickets());
+    }
+
     public Tickets getTickets() {
         return this.tickets;
     }

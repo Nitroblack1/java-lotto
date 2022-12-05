@@ -1,6 +1,6 @@
 package lotto.model;
 
-public enum WinNumberStatus {
+public enum WinResult {
 
     THREE(3, "5,000"),
     FOUR(4, "50,000"),
@@ -12,7 +12,7 @@ public enum WinNumberStatus {
     private String winMoney;
     private int count;
 
-    WinNumberStatus(double winNumber, String winMoney) {
+    WinResult(double winNumber, String winMoney) {
         this.winNumber = winNumber;
         this.winMoney = winMoney;
     }

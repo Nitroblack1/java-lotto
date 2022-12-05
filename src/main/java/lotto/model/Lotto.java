@@ -28,13 +28,14 @@ public class Lotto {
             if ((int)ticket.stream().filter(this.numbers::contains).count() == 5) {
                 if (ticket.contains(this.bonusNumber)) {
                     winNumber.add(5.5);
+                    continue;
                 }
             }
             winNumber.add((double)ticket.stream().filter(this.numbers::contains).count());
         }
-        for(WinNumberStatus winNumberStatus : WinNumberStatus.values()) {
-            if(winNumber.contains(winNumberStatus.getWinNumber())) {
-                winNumberStatus.plusCount();
+        for(WinResult winResult : WinResult.values()) {
+            while(winResult.getCount() < winNumber.stream().filter(e->e.equals(winResult.getWinNumber())).count()) {
+                winResult.plusCount();
             }
         }
     }

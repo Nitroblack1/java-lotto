@@ -31,7 +31,7 @@ public class InputView {
     }
 
     public List<Integer> inputLottoNumbers() {
-        System.out.println(PrintOuts.INPUT_LOTTO_NUMBERS);
+        System.out.println("\n" + PrintOuts.INPUT_LOTTO_NUMBERS);
         String userInput = readLine();
         return Arrays.stream(validateLottoNumbers(userInput).split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -53,7 +53,7 @@ public class InputView {
     }
 
     public int inputBonusNumber() {
-        System.out.println(PrintOuts.INPUT_BONUS_NUMBER);
+        System.out.println("\n" + PrintOuts.INPUT_BONUS_NUMBER);
         String userInput = readLine();
         return Integer.parseInt(validateBonusNumber(userInput));
     }

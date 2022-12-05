@@ -13,7 +13,7 @@ public class Application {
         LottoManager lottoManager = new LottoManager();
         try {
             lottoManager.orderTickets(inputView.inputMoney(readLine()));
-//        OutputView.printTickets();
+        OutputView.printTickets(lottoManager.getTickets().getTickets());
             lottoManager.receiveLottoNumber(inputView.inputLottoNumbers());
             lottoManager.receiveBonusNumber(inputView.inputBonusNumber());
 //        OutputView.printResult();

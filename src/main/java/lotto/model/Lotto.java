@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -21,12 +22,29 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers() {
-        return this.numbers;
+    public void winNumber(List<List<Integer>> tickets) {
+        List<Double> winNumber = new ArrayList<>();
+        for(List<Integer> ticket : tickets) {
+            if ((int)ticket.stream().filter(this.numbers::contains).count() == 5) {
+                if (ticket.contains(this.bonusNumber)) {
+                    winNumber.add(5.5);
+                }
+            }
+            winNumber.add((double)ticket.stream().filter(this.numbers::contains).count());
+        }
+        for(WinNumberStatus winNumberStatus : WinNumberStatus.values()) {
+            if(winNumber.contains(winNumberStatus.getWinNumber())) {
+                winNumberStatus.plusCount();
+            }
+        }
     }
 
     public void receiveBonusNumber(int bonus) {
         this.bonusNumber = bonus;
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 
     public int getBonusNumber() {

@@ -42,7 +42,7 @@ public class InputView {
             throw new IllegalArgumentException(ErrorMessages.LOTTO_NUMBERS_LENGTH_6);
         }
         for (String number : userInput.split(",")) {
-            if (!number.matches("^[0-9]$")) {
+            if (!number.matches("^[0-9]{1,2}$")) {
                 throw new IllegalArgumentException(ErrorMessages.INPUT_NUMBER);
             }
             if (Integer.parseInt(number) > 45 || Integer.parseInt(number) < 1) {
@@ -62,7 +62,7 @@ public class InputView {
     }
 
     private String validateBonusNumber(String bonusNumber) throws IllegalArgumentException {
-        String pattern = "^[0-9]$";
+        String pattern = "^[0-9]{1,2}$";
         if (!bonusNumber.matches(pattern)) {
             throw new IllegalArgumentException(ErrorMessages.INPUT_NUMBER);
         }

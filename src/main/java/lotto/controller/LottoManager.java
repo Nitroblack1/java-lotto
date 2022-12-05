@@ -3,6 +3,7 @@ package lotto.controller;
 import java.util.List;
 import lotto.model.Lotto;
 import lotto.model.Tickets;
+import lotto.model.WinResult;
 
 public class LottoManager {
 

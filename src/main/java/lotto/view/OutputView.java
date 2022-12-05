@@ -16,7 +16,7 @@ public class OutputView {
         System.out.println("\n" + PrintOuts.WINNING_STATISTICS);
         for (WinResult winResult : WinResult.values()) {
             if (winResult.getWinNumber() == 5.5) {
-                System.out.printf("5개 일치, 보너스 볼 일치 (" + winResult.getWinMoney() + "원), - %d개 \n",
+                System.out.printf("5개 일치, 보너스 볼 일치 (" + winResult.getWinMoney() + "원) - %d개 \n",
                         winResult.getCount());
             } else {
                 System.out.printf("%d개 일치 (" + winResult.getWinMoney() + "원) - %d개\n",

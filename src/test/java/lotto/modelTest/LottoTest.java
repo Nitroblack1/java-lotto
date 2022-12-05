@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -31,14 +32,14 @@ class LottoTest {
     @Test
     void returnWinNumber() {
         List<List<Integer>> mockedTickets = new ArrayList<>();
-        mockedTickets.add(Arrays.asList(1,2,3,4,5,6)); // 3
-        mockedTickets.add(Arrays.asList(1,3,5,7,9,11)); // 0
-        mockedTickets.add(Arrays.asList(1,4,7,10,13,16)); // 1
-        mockedTickets.add(Arrays.asList(2,4,6,8,10,11)); // 5.5
-        mockedTickets.add(Arrays.asList(2,4,6,8,10,13)); // 5
-        mockedTickets.add(Arrays.asList(2,4,6,8,10,14)); // 5
+        mockedTickets.add(Arrays.asList(1, 2, 3, 4, 5, 6)); // 3
+        mockedTickets.add(Arrays.asList(1, 3, 5, 7, 9, 11)); // 0
+        mockedTickets.add(Arrays.asList(1, 4, 7, 10, 13, 16)); // 1
+        mockedTickets.add(Arrays.asList(2, 4, 6, 8, 10, 11)); // 5.5
+        mockedTickets.add(Arrays.asList(2, 4, 6, 8, 10, 13)); // 5
+        mockedTickets.add(Arrays.asList(2, 4, 6, 8, 10, 14)); // 5
 
-        Lotto lotto = new Lotto(List.of(2,4,6,8,10,12));
+        Lotto lotto = new Lotto(List.of(2, 4, 6, 8, 10, 12));
         lotto.receiveBonusNumber(11);
 
         lotto.winNumber(mockedTickets);
@@ -51,10 +52,10 @@ class LottoTest {
     @Test
     void calculate_earning_rate() {
         List<List<Integer>> mockedTickets = new ArrayList<>();
-        mockedTickets.add(Arrays.asList(1,2,3,4,5,6)); // 3
-        mockedTickets.add(Arrays.asList(1,3,5,7,9,11)); // 0
+        mockedTickets.add(Arrays.asList(1, 2, 3, 4, 5, 6)); // 3
+        mockedTickets.add(Arrays.asList(1, 3, 5, 7, 9, 11)); // 0
 
-        Lotto lotto = new Lotto(List.of(2,4,6,8,10,12));
+        Lotto lotto = new Lotto(List.of(2, 4, 6, 8, 10, 12));
         lotto.receiveBonusNumber(11);
 
         lotto.winNumber(mockedTickets);
